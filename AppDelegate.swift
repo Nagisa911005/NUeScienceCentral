@@ -3,7 +3,7 @@
 //  NUeScienceCentral
 //
 //  Created by RYU on 16/7/31.
-//  Copyright © 2016年 Eddie. All rights reserved.
+//  Copyright © 2016 Eddie. All rights reserved.
 //
 
 import UIKit

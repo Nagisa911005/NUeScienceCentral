@@ -25,23 +25,69 @@
                                 <rect key="frame" x="128" y="93" width="12" height="12"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username:" textAlignment="natural" minimumFontSize="17" background="TextField" id="4ho-gq-lob">
+                                <rect key="frame" x="40" y="188" width="334" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password:" textAlignment="natural" minimumFontSize="17" background="TextField" id="4oW-72-s98">
+                                <rect key="frame" x="40" y="280" width="334" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="fa-user" id="1iG-hd-JJY">
+                                <rect key="frame" x="69" y="197" width="21" height="23"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="fa-key" id="E7S-9b-asC">
+                                <rect key="frame" x="66" y="291" width="24" height="23"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CTa-XX-kLP">
+                                <rect key="frame" x="40" y="371" width="334" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logInProcessing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O14-AV-5Zn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="loginButton" destination="CTa-XX-kLP" id="WVD-Ax-3QF"/>
                         <outlet property="logoDot" destination="Pi2-C5-7NY" id="7TQ-6K-G4a"/>
                         <outlet property="logoImage" destination="UCr-jg-IeI" id="wMI-pb-6Lp"/>
+                        <outlet property="passwordIcon" destination="E7S-9b-asC" id="FJJ-wG-vRe"/>
+                        <outlet property="passwordTextField" destination="4oW-72-s98" id="YwC-lV-pn3"/>
+                        <outlet property="userIcon" destination="1iG-hd-JJY" id="Fgq-Xk-KLg"/>
+                        <outlet property="usernameTextField" destination="4ho-gq-lob" id="acZ-BE-8dr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="326"/>
+            <point key="canvasLocation" x="-588" y="343"/>
         </scene>
     </scenes>
     <resources>
         <image name="Oval" width="12" height="12"/>
+        <image name="TextField" width="334" height="41"/>
         <image name="e-Science Central" width="316" height="31"/>
+        <image name="fa-key" width="24" height="23"/>
+        <image name="fa-user" width="21" height="23"/>
         <image name="iPhone 6 Plus Login backGround" width="414" height="736"/>
     </resources>
 </document>
