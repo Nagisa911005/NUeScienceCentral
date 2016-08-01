@@ -63,6 +63,14 @@
                                     <action selector="logInProcessing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O14-AV-5Zn"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="E0R-pI-q0c">
+                                <rect key="frame" x="70" y="387" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Error" id="KVh-rW-cg4">
+                                <rect key="frame" x="40" y="371" width="334" height="51"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -73,16 +81,86 @@
                         <outlet property="logoImage" destination="UCr-jg-IeI" id="wMI-pb-6Lp"/>
                         <outlet property="passwordIcon" destination="E7S-9b-asC" id="FJJ-wG-vRe"/>
                         <outlet property="passwordTextField" destination="4oW-72-s98" id="YwC-lV-pn3"/>
+                        <outlet property="spinner" destination="E0R-pI-q0c" id="8cb-Ce-wW5"/>
                         <outlet property="userIcon" destination="1iG-hd-JJY" id="Fgq-Xk-KLg"/>
                         <outlet property="usernameTextField" destination="4ho-gq-lob" id="acZ-BE-8dr"/>
+                        <outlet property="warningMessage" destination="KVh-rW-cg4" id="qZl-aY-ND5"/>
+                        <segue destination="UEj-Yf-7sY" kind="modal" identifier="login" id="bTo-np-cVk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-588" y="343"/>
+            <point key="canvasLocation" x="-517" y="-383"/>
+        </scene>
+        <!--WORK FLOWS-->
+        <scene sceneID="818-Cl-qz1">
+            <objects>
+                <viewController id="l5s-Uq-Glp" customClass="WorkListViewController" customModule="NUeScienceCentral" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tKd-A0-O8g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="24" sectionHeaderHeight="28" sectionFooterHeight="28" id="F7R-v7-g5k">
+                                <rect key="frame" x="0.0" y="116" width="414" height="620"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="workLists" selectionStyle="default" indentationWidth="10" rowHeight="24" id="KPl-M1-YXL">
+                                        <rect key="frame" x="0.0" y="92" width="414" height="24"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KPl-M1-YXL" id="Lve-Li-233">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="23"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="WORK FLOWS" id="PGz-3C-jPH"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yaA-ku-wZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="590" y="-383"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eUS-Ez-RNY">
+            <objects>
+                <viewController id="e1K-Jx-0Ml" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FqD-t5-PcO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ubY-L8-HQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1213" y="-389"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZgZ-TH-PIC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UEj-Yf-7sY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SWU-LV-wVB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="l5s-Uq-Glp" kind="relationship" relationship="rootViewController" id="MNL-Oj-wYe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ed-cj-J6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-15" y="-383"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Error" width="334" height="51"/>
         <image name="Oval" width="12" height="12"/>
         <image name="TextField" width="334" height="41"/>
         <image name="e-Science Central" width="316" height="31"/>

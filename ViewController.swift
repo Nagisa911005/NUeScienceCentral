@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, LoginHttpProtocol{
 
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var logoDot: UIImageView!
@@ -21,10 +21,22 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    @IBOutlet weak var warningMessage: UIImageView!
+   
     
-    //create a active which used to be added to login button
-    let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+    //CUSTOM
+    //set the initial point of loginbutton position
+    var loginButtonPosition = CGPoint.zero
+    
+    var loginStateCode:Int = 0
+    var loginHttpProcess: LoginHttpController = LoginHttpController()
+ 
+    
+    //create a active indicator which used to be added to login button
+//    var spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+//    var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +69,13 @@ class ViewController: UIViewController {
         self.passwordIcon.center.x -= self.view.bounds.width
         
         //set login button initial position
+        self.loginButtonPosition = self.loginButton.center
         self.loginButton.center.x -= self.view.bounds.width
+        
+        //set the initial state of activity indicator
+        self.spinner.hidden = true
+        //set the initial state of ImageView of warning message
+        self.warningMessage.hidden = true
         
         
         
@@ -98,14 +116,102 @@ class ViewController: UIViewController {
         
     }
     
+    
     //when click on the login button which will using the following fucn 
     @IBAction func logInProcessing(sender: AnyObject) {
-        
-        self.loginButton.addSubview(self.spinner)
+        //set the state of activity indicator
+        self.spinner.hidden = false
+        //set the style of activity indicator
+        self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        //let activity indicator start animating
         self.spinner.startAnimating()
+        
+        
+        //set the animation of login button when we touch the button
+       
+        UIView.animateWithDuration(0.3, animations: {
+            self.loginButton.center = self.loginButtonPosition
+        })
+        self.loginButton.center.x -= 30
+        self.spinner.center.x -= 30
+        
+        //reset the state of login buttom and warning message
+        UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: [], animations: {
+                self.loginButton.center.x += 30
+                self.spinner.center.x += 30
+            }, completion: nil)
+        
+        UIView.transitionWithView(self.warningMessage, duration: 0.3, options: [.TransitionFlipFromTop, .CurveEaseOut], animations: {
+            self.warningMessage.hidden = true
+            }, completion: nil)
+        
+        
+        //get the username and password from text field
+        let userName = usernameTextField.text
+        let passWord = passwordTextField.text
+        print("****USERNAME & PASSWORD****")
+        print(userName)
+        print(passWord)
+        print("***************************")
+        
+        //estimate the username and password whether has the value
+        if(userName!.isEmpty || passWord!.isEmpty){
+            
+            alertMessage("** ALL FIELDS ARE REQUIRED !!! **")
+        }else{
+            
+            loginHttpProcess.delegate = self
+            loginHttpProcess.loginProcess(userName!, passWord: passWord!)
+        }
     
-     }
+    }
     
+    func didReceiveStateCode(statesCode: Int) {
+        
+        print("delegate")
+        print(statesCode)
+        
+        if(statesCode == 200){
+            dispatch_async(dispatch_get_main_queue()) {
+                self.performSegueWithIdentifier("login", sender: self)
+            }
+        }else if(statesCode == 400){
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                
+                UIView.animateWithDuration(0.3, animations: {
+                    self.loginButton.center.y += 72
+                    self.spinner.hidden = true
+                    }, completion: {
+                        _ in
+                        
+                        UIView.transitionWithView(self.warningMessage, duration: 0.3, options: [.TransitionFlipFromTop, .CurveEaseOut], animations: {
+                                self.warningMessage.hidden = false
+                            }, completion: nil)
+                })
+            
+            }
+            
+        }else{
+            
+            alertMessage("** SORRY SERVER CRASHED TRY AGAIN LATER !!! **")
+        
+        }
+        
+        
+    }
+    
+    func alertMessage(userMessage:String){
+        
+        let myAlert = UIAlertController(title: "ALERT", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+        
+        myAlert.addAction(okAction)
+        
+        self.presentViewController(myAlert, animated: true, completion: nil)
+    }
     
 
     override func didReceiveMemoryWarning() {
