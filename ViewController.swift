@@ -26,10 +26,9 @@ class ViewController: UIViewController, LoginHttpProtocol{
     @IBOutlet weak var warningMessage: UIImageView!
    
     
-    //CUSTOM
+    //CUSTOM PARAMETERS
     //set the initial point of loginbutton position
     var loginButtonPosition = CGPoint.zero
-    
     var loginStateCode:Int = 0
     var loginHttpProcess: LoginHttpController = LoginHttpController()
  
@@ -96,17 +95,20 @@ class ViewController: UIViewController, LoginHttpProtocol{
                 self.logoDot.center.x += self.view.bounds.width/2
             }, completion: nil)
         
+        
         //using the animation for username text field
         UIView.animateWithDuration(0.4, delay: 0.5, options: .CurveEaseOut, animations: {
                 self.usernameTextField.center.x += self.view.bounds.width
                 self.userIcon.center.x += self.view.bounds.width
             }, completion: nil)
         
+       
         //using the animation for password text field
         UIView.animateWithDuration(0.4, delay: 0.6, options: .CurveEaseOut, animations: {
                 self.passwordTextField.center.x += self.view.bounds.width
                 self.passwordIcon.center.x += self.view.bounds.width
             }, completion: nil)
+        
         
         //creating the animation for login button
         UIView.animateWithDuration(0.4, delay: 0.7, options: .CurveEaseOut, animations: {
@@ -158,6 +160,7 @@ class ViewController: UIViewController, LoginHttpProtocol{
         if(userName!.isEmpty || passWord!.isEmpty){
             
             alertMessage("** ALL FIELDS ARE REQUIRED !!! **")
+            self.spinner.hidden = true
         }else{
             
             loginHttpProcess.delegate = self
