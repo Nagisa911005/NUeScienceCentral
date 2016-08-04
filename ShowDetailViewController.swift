@@ -24,6 +24,13 @@ class ShowDetailViewController: UIViewController, UITableViewDataSource, UITable
         let url =  "http://demo.escapp.net/website-api/rest/workflows/\(workFlowID)/invocations"
         httpProcess.delegate = self
         httpProcess.showDetail(url)
+        
+        //check the device whether support the 3D touch founction
+        if traitCollection.forceTouchCapability == .Available {
+            registerForPreviewingWithDelegate(self, sourceView: tv)
+        }
+        
+        
     }
     
     
